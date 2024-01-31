@@ -60,16 +60,16 @@ public class SpellChecker {
 
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
 		int N= dictionary.length;
-		String selectedWord=word;
 		for(int i=0; i<N;i++){
 			int lev=levenshtein(word, dictionary[i]);
 			if(threshold>=lev){
 				threshold=lev;
-				selectedWord=dictionary[i];
+				word=dictionary[i];
+				break;
 			}
 		
 	}
-	return selectedWord;
+	return word;
 	}
 
 }
