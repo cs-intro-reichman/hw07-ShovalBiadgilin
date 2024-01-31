@@ -11,7 +11,7 @@ public class SpellChecker {
 	}
 
 	public static String tail(String str) {
-		// Your code goes here
+		return str.substring(1);
 	}
 
 	public static int levenshtein(String word1, String word2) {
@@ -29,11 +29,11 @@ public class SpellChecker {
 	
 	 
 	 if(word1.charAt(0)==word2.charAt(0)){
-		 return levenshtein(word1.substring(1), word2.substring(1));
+		 return levenshtein(tail(word1), tail(word2));
 	}else{
-		int first=  levenshtein(word1.substring(1), word2);
-		int second= levenshtein(word1, word2.substring(1));
-		int third= levenshtein(word1.substring(1), word2.substring(1));
+		int first=  levenshtein(tail(word1), word2);
+		int second= levenshtein(word1, tail(word2));
+		int third= levenshtein(tail(word1), tail(word2));
 		int try1= Math.min(first, second);
 		int try2= Math.min(try1, third);
 		return (try2 + 1);
