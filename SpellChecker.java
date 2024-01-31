@@ -60,7 +60,7 @@ public class SpellChecker {
 
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
 		int N= dictionary.length;
-		for(int i=0; i<N;i++){
+		for(int i=0; i<=N;i++){
 			int lev=levenshtein(word, dictionary[i]);
 			if(threshold>=lev){
 				threshold=lev;
