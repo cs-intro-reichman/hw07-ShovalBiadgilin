@@ -62,18 +62,17 @@ public class SpellChecker {
 		int N= dictionary.length;
 		for(int i=0; i<N;i++){
 			int lev=levenshtein(word, dictionary[i]);
-			if(threshold==lev){
-				threshold=lev;
-				word=dictionary[i];
+			if(lev==0){
 				return word;
 			}else{
-				if(threshold>lev){
+				if(threshold>=lev){
 					threshold=lev;
 				    word=dictionary[i];
 				}
 		
 	}
 		}
+	
 	return word;
 	
 	}
