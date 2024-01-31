@@ -15,21 +15,60 @@ public class SpellChecker {
 	}
 
 	public static int levenshtein(String word1, String word2) {
-		// Your code goes here
+	word1=word1.toLowerCase();
+	word2=word2.toLowerCase();
+	int lengthWord1=word1.length();
+	int lengthWord2=word2.length();
+	//the base cases
+	
+	if(lengthWord2==0){
+		return lengthWord1;
+	}else if(lengthWord1==0){ 
+		return lengthWord2;
 	}
+	
+	 
+	 if(word1.charAt(0)==word2.charAt(0)){
+		 return levenshtein(word1.substring(1), word2.substring(1));
+	}else{
+		int first=  levenshtein(word1.substring(1), word2);
+		int second= levenshtein(word1, word2.substring(1));
+		int third= levenshtein(word1.substring(1), word2.substring(1));
+		int try1= Math.min(first, second);
+		int try2= Math.min(try1, third);
+		return (try2 + 1);
+	
+}
+
+
+    
+	
+		 
+}
 
 	public static String[] readDictionary(String fileName) {
 		String[] dictionary = new String[3000];
 
 		In in = new In(fileName);
 
-		// Your code here
+		for(int i=0; i<dictionary.length; i++){ 
+			dictionary[i]=in.readString();
+		}
 
 		return dictionary;
 	}
 
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
-		// Your code goes here
+		int N= dictionary.length;
+		for(int i=0; i<N;i++){
+			int lev=levenshtein(word, dictionary[i]);
+			if(threshold>=lev){
+				threshold=lev;
+				word=dictionary[i];
+			}
+		
+	}
+	return word;
 	}
 
 }
