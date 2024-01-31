@@ -67,8 +67,7 @@ public class SpellChecker {
 			}else{
 				if(threshold>=lev){
 					threshold=lev;
-				    word=dictionary[i];
-					return word; 
+				    word=dictionary[i]; 
 				}
 		
 	}
